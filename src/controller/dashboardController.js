@@ -1,5 +1,5 @@
 const Product = require("../models/Product");
-const User = require("../models/user");
+const User = require("../models/User");
 
 // ==========================================
 // DASHBOARD
