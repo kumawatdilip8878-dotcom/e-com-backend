@@ -1,7 +1,7 @@
 const express = require("express");
 const authRoutes = require("./routes/adminRoutes");
 const cartRoutes = require("./routes/cartRoutes");
-
+require("dotenv").config();
 const connectDB=require("./Config/db")
 const path = require("path")
 const app = express();
