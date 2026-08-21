@@ -193,7 +193,7 @@ exports.loginby = async (req, res) => {
         mobile: user.mobile,
         role: user.role,
       },
-      process.env.Jwt_SECRET,
+      process.env.JWT_SECRET,
       {
         expiresIn: "3h",
       }
@@ -307,7 +307,7 @@ const token=jwt.sign(
     email:user.email,mobile:user,mobile,
     role:user.role
     },
-    process.env.Jwt_SECRET,
+    process.env.JWT_SECRET,
     {
       expiresIn:"1h"
     }
