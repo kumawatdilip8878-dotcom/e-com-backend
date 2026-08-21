@@ -149,7 +149,6 @@ await sendMail(
   }
 };
 
-
 exports.loginby = async (req, res) => {
   try {
     const { error } = loginByValidation.validate(req.body);
@@ -163,12 +162,21 @@ exports.loginby = async (req, res) => {
 
     const { mobile, password } = req.body;
 
+    // Find user
     const user = await User.findOne({ mobile });
 
     if (!user) {
       return res.status(404).json({
         success: false,
         message: "User not found",
+      });
+    }
+
+    // Check Admin Role
+    if (user.role !== "admin") {
+      return res.status(403).json({
+        success: false,
+        message: "Only admin can login",
       });
     }
 
@@ -205,6 +213,7 @@ exports.loginby = async (req, res) => {
       data: user,
       token,
     });
+
   } catch (error) {
     return res.status(500).json({
       success: false,
